@@ -1,28 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Card, Typography, Box } from '@material-ui/core';
-import { getCharactersData } from '../services/api';
+import { Box, Grid } from '@material-ui/core';
+import { data }  from '../constants/data';
 import Character from './Character';
 
 const Characters = () => {
+    console.log("helooooo", data.characters);
     
-    const [ data, setData ] = useState([]);
-
-    useEffect(() => {
-        getCharactersData().then(res => {
-            setData(res.data);
-        }).catch(error => {
-            console.log(error);
-        });
-
-    }, []);
-
     return (
-        <Box>
-            {
-            data.map(value => {
-                return <Character key={value.id} value={value} />
-            })
-            }   
+        <Box style={{margin: '10px 35px'}}>
+            <Grid container>
+                {
+                    data.characters.map((value, index) => (
+                        <Grid item key={index}><Character key={value.id} value={value} /></Grid>
+                    ))
+                }   
+            </Grid>
         </Box>
     )
 
