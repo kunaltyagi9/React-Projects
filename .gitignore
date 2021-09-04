@@ -1,3 +1,5 @@
 crud-app/node_modules
 crud-app/package-lock.json
+todo-app/node_modules
+todo-app/package-lock.json
 website-dev
