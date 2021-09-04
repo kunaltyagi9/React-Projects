@@ -3,11 +3,11 @@ import { Card, CardContent, makeStyles, Typography, Box } from '@material-ui/cor
 
 const useStyle = makeStyles({
     container: {
-        display: 'flex'
-    },
-    trade: {
-        flex: 1,
-        padding: 10
+        display: 'flex',
+        '& > *': {
+            flex: 1,
+            padding: 10
+        }
     },
     income: {
         color: 'green'
@@ -26,13 +26,13 @@ const ExpenseCard = ({ transactions }) => {
     
     return (
         <Box className={classes.container}>
-            <Card className={classes.trade}>
+            <Card>
                 <CardContent>
                     <Typography>Income</Typography>
                     <Typography className={classes.income}>+₹{income}</Typography>
                 </CardContent>
             </Card>
-            <Card className={classes.trade}>
+            <Card>
                 <CardContent>
                     <Typography>Expense</Typography>
                     <Typography className={classes.expense}>-₹{expense}</Typography>

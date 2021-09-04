@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 
 const useStyle = makeStyles({
     balance: {
-        fontSize: 20
+        fontSize: 25,
+        marginBottom: 20
     }
 })
 

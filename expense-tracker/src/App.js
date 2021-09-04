@@ -8,13 +8,22 @@ import NewTransaction from './Components/NewTransaction';
 import { useEffect } from 'react';
 
 const useStyle = makeStyles({
+  header: {
+    margin: '10px 0',
+  	color: 'blue',
+	  fontSize: 36,
+	  textTransform: 'uppercase',
+  },
   component: {
     background: '#FFF',
     padding: 10,
     borderRadius: 20,
-    width: 500,
+    display: 'flex',
+    width: 800,
     '& > *': {
-      padding: 10
+      padding: 10,
+      width: '50%',
+      height: '70vh'
     }
   }
 })
@@ -23,10 +32,10 @@ function App() {
   const classes = useStyle();
 
   const [transactions, setTransactions] = useState([
-    { id: 1, text: 'Flower', amount: -20},
-    { id: 2, text: 'Salary', amount: 300},
-    { id: 3, text: 'Book', amount: -10},
-    { id: 4, text: 'Camera', amount: 150 },
+    { id: 1, text: 'Momos', amount: -20},
+    { id: 2, text: 'Salary', amount: 3000},
+    { id: 3, text: 'Book', amount: -100},
+    { id: 4, text: 'Bonus', amount: 1500 },
   ]);
 
   const deleteTransaction = (id) => {
@@ -44,12 +53,16 @@ function App() {
 
   return (
     <div className="App">
-      <Typography style={{marginBottom:20}}>Expense Tracker</Typography>
+      <Typography className={classes.header}>Expense Tracker</Typography>
       <Box className={classes.component}>
-        <Balance transactions={transactions} />
-        <ExpenseCard transactions={transactions} />
-        <Transactions transactions={transactions} deleteTransaction={deleteTransaction}/>
-        <NewTransaction addTransaction={addTransaction}/>
+        <Box>
+          <Balance transactions={transactions} />
+          <ExpenseCard transactions={transactions} />
+          <NewTransaction addTransaction={addTransaction}/>
+        </Box>
+        <Box>
+          <Transactions transactions={transactions} deleteTransaction={deleteTransaction}/>
+        </Box>
       </Box>
     </div>
   );

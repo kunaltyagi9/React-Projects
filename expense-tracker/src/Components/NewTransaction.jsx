@@ -1,10 +1,24 @@
 import { useState } from 'react';
-import { Typography, Box, TextField, Button } from '@material-ui/core';
+import { Typography, Box, TextField, Button, makeStyles } from '@material-ui/core';
 
+const useStyle = makeStyles({
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        '& > *': {
+            marginTop: 30
+        }
+    },
+    button: {
+        background: '#445A6F',
+        color: '#fff'
+    }
+});
 
 const NewTransaction = ({ addTransaction }) => {
+    const classes = useStyle();
     const [text, setText] = useState('');
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState();
 
     const newTransaction = e => {
         const transaction = {
@@ -12,21 +26,16 @@ const NewTransaction = ({ addTransaction }) => {
             text: text,
             amount: +amount
         }
-
         addTransaction(transaction);
     }
     
     return (
-        <>
-            <Typography>Add New Transaction</Typography>
-            <Box>
-                <TextField value={text} label="Text" onChange = {(e) => setText(e.target.value)} />
-            </Box>
-            <Box>
-                <TextField value={amount} label="Enter Amount" onChange = {(e) => setAmount(e.target.value)}  />
-            </Box>
-            <Button onClick={newTransaction}>Add Transaction</Button>
-        </>
+        <Box className={classes.container}>
+            <Typography variant="h5">New Transaction</Typography>
+            <TextField value={text} label="Enter Expense" onChange = {(e) => setText(e.target.value)} />
+            <TextField value={amount} label="Enter Amount" onChange = {(e) => setAmount(e.target.value)}  />
+            <Button className={classes.button} variant="contained" onClick={newTransaction}>Add Transaction</Button>
+        </Box>
     )
 }
 

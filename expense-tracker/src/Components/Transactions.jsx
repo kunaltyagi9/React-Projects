@@ -3,7 +3,12 @@ import Transaction from './Transaction';
 
 const useStyle = makeStyles({
     component: {
-        
+        '& > *': {
+            marginBottom: 10
+        }
+    },
+    heading: {
+
     }
 })
 
@@ -12,7 +17,7 @@ const Transactions = ({ transactions, deleteTransaction }) => {
 
     return (
         <Box className={classes.component}>
-            <Typography>History</Typography>
+            <Typography variant="h5">Transaction History</Typography>
             <Divider style={{width: '100%'}} />
             <List>
                 {

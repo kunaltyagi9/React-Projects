@@ -6,12 +6,6 @@ const useStyle = makeStyles({
         display: 'flex',
         marginTop: 10,
         border: '1px solid #F6F6F6'
-    },
-    text: {
-
-    }, 
-    amount: {
-
     }
 })
 
@@ -24,7 +18,7 @@ const Transaction = ({transaction, deleteTransaction}) => {
      
 
     return (
-        <ListItem style={{borderRight: `5px solid ${color}`}} className={classes.list}>
+        <ListItem style={{background: `${color}`, color: '#fff'}} className={classes.list}>
             <ListItemIcon>
                 <DeleteIcon onClick={() => deleteTransaction(transaction.id)} />
             </ListItemIcon>
