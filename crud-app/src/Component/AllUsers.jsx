@@ -1,32 +1,32 @@
-import react, { useState, useEffect } from 'react';
-import { Table, TableHead, TableCell, Paper, TableRow, TableBody, Button, makeStyles } from '@material-ui/core'
+import { useState, useEffect } from 'react';
+
+import { Table, TableHead, TableCell, TableRow, TableBody, Button, styled } from '@mui/material'
 import { getUsers, deleteUser } from '../Service/api';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles({
-    table: {
-        width: '90%',
-        margin: '50px 0 0 50px'
-    },
-    thead: {
-        '& > *': {
-            fontSize: 20,
-            background: '#000000',
-            color: '#FFFFFF'
-        }
-    },
-    row: {
-        '& > *': {
-            fontSize: 18
-        }
+const StyledTable = styled(Table)`
+    width: 90%;
+    margin: 50px 0 0 50px;
+`;
+
+const THead = styled(TableRow)`
+    & > th {
+        font-size: 20px;
+        background: #000000;
+        color: #FFFFFF;
     }
-})
+`;
+
+const TRow = styled(TableRow)`
+    & > td{
+        font-size: 18px
+    }
+`;
 
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
-    const classes = useStyles();
-
+    
     useEffect(() => {
         getAllUsers();
     }, []);
@@ -42,33 +42,33 @@ const AllUsers = () => {
     }
 
     return (
-        <Table className={classes.table}>
+        <StyledTable>
             <TableHead>
-                <TableRow className={classes.thead}>
+                <THead>
                     <TableCell>Id</TableCell>
                     <TableCell>Name</TableCell>
                     <TableCell>Username</TableCell>
                     <TableCell>Email</TableCell>
                     <TableCell>Phone</TableCell>
                     <TableCell></TableCell>
-                </TableRow>
+                </THead>
             </TableHead>
             <TableBody>
                 {users.map((user) => (
-                    <TableRow className={classes.row} key={user._id}>
-                        <TableCell>{user._id}</TableCell>
+                    <TRow key={user.id}>
+                        <TableCell>{user.id}</TableCell>
                         <TableCell>{user.name}</TableCell>
                         <TableCell>{user.username}</TableCell>
                         <TableCell>{user.email}</TableCell>
                         <TableCell>{user.phone}</TableCell>
                         <TableCell>
-                            <Button color="primary" variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${user._id}`}>Edit</Button>
-                            <Button color="secondary" variant="contained" onClick={() => deleteUserData(user._id)}>Delete</Button> 
+                            <Button color="primary" variant="contained" style={{marginRight:10}} component={Link} to={`/edit/${user.id}`}>Edit</Button>
+                            <Button color="secondary" variant="contained" onClick={() => deleteUserData(user.id)}>Delete</Button> 
                         </TableCell>
-                    </TableRow>
+                    </TRow>
                 ))}
             </TableBody>
-        </Table>
+        </StyledTable>
     )
 }
 

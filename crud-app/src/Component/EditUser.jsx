@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from '@material-ui/core';
-import { useHistory, useParams } from 'react-router-dom';
+
+import { FormGroup, FormControl, InputLabel, Input, Button, styled, Typography } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getUsers, editUser } from '../Service/api';
 
 const initialValue = {
@@ -10,22 +11,20 @@ const initialValue = {
     phone: ''
 }
 
-const useStyles = makeStyles({
-    container: {
-        width: '50%',
-        margin: '5% 0 0 25%',
-        '& > *': {
-            marginTop: 20
-        }
-    }
-})
+const Container = styled(FormGroup)`
+    width: 50%;
+    margin: 5% 0 0 25%;
+    & > div {
+        margin-top: 20px
+`;
+
 
 const EditUser = () => {
     const [user, setUser] = useState(initialValue);
     const { name, username, email, phone } = user;
     const { id } = useParams();
-    const classes = useStyles();
-    let history = useHistory();
+    
+    let navigate = useNavigate();
 
     useEffect(() => {
         loadUserDetails();
@@ -38,7 +37,7 @@ const EditUser = () => {
 
     const editUserDetails = async() => {
         const response = await editUser(id, user);
-        history.push('/all');
+        navigate('/all');
     }
 
     const onValueChange = (e) => {
@@ -47,7 +46,7 @@ const EditUser = () => {
     }
 
     return (
-        <FormGroup className={classes.container}>
+        <Container>
             <Typography variant="h4">Edit Information</Typography>
             <FormControl>
                 <InputLabel htmlFor="my-input">Name</InputLabel>
@@ -68,7 +67,7 @@ const EditUser = () => {
             <FormControl>
                 <Button variant="contained" color="primary" onClick={() => editUserDetails()}>Edit User</Button>
             </FormControl>
-        </FormGroup>
+        </Container>
     )
 }
 
