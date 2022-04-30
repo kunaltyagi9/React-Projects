@@ -1,24 +1,25 @@
-import { AppBar, Toolbar, makeStyles } from '@material-ui/core';
+
+
+import { AppBar, Toolbar, styled } from '@mui/material';
 import logo from '../images/logo.jpg';
 
-const useStyle = makeStyles({
-    header: {
-        background: '#000000'
-    },
-    logo: {
-        width: 250
-    }
+const StyledHeader = styled(AppBar)`
+    background: #000000
+`;
+
+const Image = styled('img')({
+    width: 250
 });
 
-const Header = () => {
-    const classes = useStyle();
 
+const Header = () => {
+    
     return (
-        <AppBar className={classes.header} position="static">
+        <StyledHeader position="static">
             <Toolbar>
-                <img className={classes.logo} src={logo} alt="got" />
+                <Image src={logo} alt="got" />
             </Toolbar>
-        </AppBar>
+        </StyledHeader>
 
     )
 }

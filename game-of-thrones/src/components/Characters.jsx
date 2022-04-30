@@ -1,10 +1,10 @@
+
 import { useEffect, useState } from 'react';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid } from '@mui/material';
 import { data }  from '../constants/data';
 import Character from './Character';
 
 const Characters = () => {
-    console.log("helooooo", data.characters);
     
     return (
         <Box style={{margin: '10px 35px'}}>
