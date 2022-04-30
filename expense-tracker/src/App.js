@@ -1,36 +1,36 @@
 import { useState } from 'react';
-import { Typography, Box, makeStyles } from '@material-ui/core';
+
+import { Typography, Box, styled } from '@mui/material';
 import './App.css';
+
 import Balance from './Components/Balance';
 import ExpenseCard from './Components/ExpenseCard';
 import Transactions from './Components/Transactions';
 import NewTransaction from './Components/NewTransaction';
-import { useEffect } from 'react';
 
-const useStyle = makeStyles({
-  header: {
-    margin: '10px 0',
-  	color: 'blue',
-	  fontSize: 36,
-	  textTransform: 'uppercase',
-  },
-  component: {
-    background: '#FFF',
-    padding: 10,
-    borderRadius: 20,
-    display: 'flex',
-    width: 800,
-    '& > *': {
-      padding: 10,
-      width: '50%',
-      height: '70vh'
-    }
+const Header = styled(Typography)`
+  margin: 10px 0;
+  color: blue;
+  font-size: 36px;
+  text-transform: uppercase;
+`;
+
+const Component = styled(Box)`
+  background: #FFF;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  width: 800px;
+  & > div {
+    padding: 10px;
+    width: 50%;
+    height: 70vh;
   }
-})
+}
+`;
 
 function App() {
-  const classes = useStyle();
-
+  
   const [transactions, setTransactions] = useState([
     { id: 1, text: 'Momos', amount: -20},
     { id: 2, text: 'Salary', amount: 3000},
@@ -53,8 +53,8 @@ function App() {
 
   return (
     <div className="App">
-      <Typography className={classes.header}>Expense Tracker</Typography>
-      <Box className={classes.component}>
+      <Header>Expense Tracker</Header>
+      <Component>
         <Box>
           <Balance transactions={transactions} />
           <ExpenseCard transactions={transactions} />
@@ -63,7 +63,7 @@ function App() {
         <Box>
           <Transactions transactions={transactions} deleteTransaction={deleteTransaction}/>
         </Box>
-      </Box>
+      </Component>
     </div>
   );
 }

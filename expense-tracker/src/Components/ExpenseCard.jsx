@@ -1,44 +1,35 @@
 
-import { Card, CardContent, makeStyles, Typography, Box } from '@material-ui/core';
+import { Card, CardContent, styled, Typography, Box } from '@mui/material';
 
-const useStyle = makeStyles({
-    container: {
-        display: 'flex',
-        '& > *': {
-            flex: 1,
-            padding: 10
-        }
-    },
-    income: {
-        color: 'green'
-    },
-    expense: {
-        color: 'red'
+const Container = styled(Box)`
+    display: flex;
+    & > div {
+        flex: 1;
+        padding: 10px;
     }
-})
+`;
 
 const ExpenseCard = ({ transactions }) => {
-    const classes = useStyle();
-
+    
     const amount = transactions.map(transaction => transaction.amount);
     const income = amount.filter(item => item > 0).reduce((acc, item) => (acc+=item), 0).toFixed(2);
     const expense = (amount.filter(item => item < 0).reduce((acc, item) => (acc+=item), 0) * -1).toFixed(2);
     
     return (
-        <Box className={classes.container}>
+        <Container>
             <Card>
                 <CardContent>
                     <Typography>Income</Typography>
-                    <Typography className={classes.income}>+₹{income}</Typography>
+                    <Typography style={{ color: 'green' }}>+₹{income}</Typography>
                 </CardContent>
             </Card>
             <Card>
                 <CardContent>
                     <Typography>Expense</Typography>
-                    <Typography className={classes.expense}>-₹{expense}</Typography>
+                    <Typography style={{ color: 'red' }}>-₹{expense}</Typography>
                 </CardContent>
             </Card>
-        </Box>
+        </Container>
     )
 }
 

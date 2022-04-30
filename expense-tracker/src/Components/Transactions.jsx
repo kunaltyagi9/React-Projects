@@ -1,22 +1,18 @@
-import { Typography, List, Divider, makeStyles, Box } from '@material-ui/core';
+
+
+import { Typography, List, Divider, styled, Box } from '@mui/material';
 import Transaction from './Transaction';
 
-const useStyle = makeStyles({
-    component: {
-        '& > *': {
-            marginBottom: 10
-        }
-    },
-    heading: {
-
+const Component = styled(Box)`
+    & > h5 {
+        margin-bottom: 10px;
     }
-})
+`;
 
 const Transactions = ({ transactions, deleteTransaction }) => {
-    const classes = useStyle();
-
+    
     return (
-        <Box className={classes.component}>
+        <Component>
             <Typography variant="h5">Transaction History</Typography>
             <Divider style={{width: '100%'}} />
             <List>
@@ -26,7 +22,7 @@ const Transactions = ({ transactions, deleteTransaction }) => {
                     })
                 }
             </List>
-        </Box>
+        </Component>
     )
 }
 

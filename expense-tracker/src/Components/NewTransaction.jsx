@@ -1,22 +1,20 @@
 import { useState } from 'react';
-import { Typography, Box, TextField, Button, makeStyles } from '@material-ui/core';
+import { Typography, Box, TextField, Button, styled } from '@mui/material';
 
-const useStyle = makeStyles({
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        '& > *': {
-            marginTop: 30
-        }
-    },
-    button: {
-        background: '#445A6F',
-        color: '#fff'
+const Container = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    & > h5, & > div, & > button {
+        margin-top: 30px
     }
-});
+`;
+
+const StyledButton = styled(Button)`
+    background: #445A6F;
+    color: #fff;
+`;
 
 const NewTransaction = ({ addTransaction }) => {
-    const classes = useStyle();
     const [text, setText] = useState('');
     const [amount, setAmount] = useState();
 
@@ -30,12 +28,12 @@ const NewTransaction = ({ addTransaction }) => {
     }
     
     return (
-        <Box className={classes.container}>
+        <Container>
             <Typography variant="h5">New Transaction</Typography>
             <TextField value={text} label="Enter Expense" onChange = {(e) => setText(e.target.value)} />
             <TextField value={amount} label="Enter Amount" onChange = {(e) => setAmount(e.target.value)}  />
-            <Button className={classes.button} variant="contained" onClick={newTransaction}>Add Transaction</Button>
-        </Box>
+            <StyledButton variant="contained" onClick={newTransaction}>Add Transaction</StyledButton>
+        </Container>
     )
 }
 
