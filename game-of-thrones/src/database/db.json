@@ -1,5 +1,5 @@
-export const data = {
-    characters :[
+{
+   "characters" :[
        {
           "characterName":"Addam Marbrand",
           "characterLink":"/character/ch0305333/",
