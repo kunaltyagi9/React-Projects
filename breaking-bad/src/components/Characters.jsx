@@ -1,11 +1,12 @@
 
 import Character from './Character';
-import { Grid, Box } from '@material-ui/core';
+import { Grid, Box } from '@mui/material';
 
 
 const Characters = ({ data }) => {
+    
     return (
-        <Box style={{margin:20}}>
+        <Box style={{ margin:20 }}>
             <Grid container spacing={4}>
                 {   
                     data.map(item => (

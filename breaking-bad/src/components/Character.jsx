@@ -1,16 +1,14 @@
-import { Card, makeStyles, Tooltip, Typography } from '@material-ui/core';
 
-const useStyle = makeStyles({
-    img: {
-        height: 300,
-        width: '100%',
-        objectFit: 'cover'
-    }
+import { Card, styled, Tooltip, Typography } from '@mui/material';
+
+const Image = styled('img')({ 
+    height: 300,
+    width: '100%',
+    objectFit: 'cover'
 })
 
 const Character = ({ item }) => {
-    console.log(item);
-    const classes = useStyle();
+    
     return (
         <Card>
             <Tooltip title={
@@ -24,7 +22,7 @@ const Character = ({ item }) => {
                 }
             
                 arrow placement="top">
-                <img src={item.img} className={classes.img} alt = "character" />
+                <Image src={item.img} alt = "character" />
             </Tooltip>
         </Card>
     )

@@ -6,6 +6,10 @@ postman-clone/node_modules
 postman-clone/package-lock.json
 codepen-clone/node_modules
 codepen-clone/package-lock.json
+expense-tracker/node_modules
+expense-tracker/package-lock.json
+breaking-bad/node_modules
+breaking-bad/package-lock.json
 website-dev
 quiz-app
 chat-bot

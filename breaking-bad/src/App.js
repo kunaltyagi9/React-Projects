@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import Header from './components/Header';
-import { Box } from '@material-ui/core';
-import { fetchData } from './service/api';
 import Characters  from './components/Characters';
+
+import { Box } from '@mui/material';
+import { fetchData } from './service/api';
 
 const App = () => {
   const [text, setText] = useState("")
