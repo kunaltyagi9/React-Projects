@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "name": "MS Dhoni",
-      "username": "dhoni",
-      "email": "msdhoni@gmail.com",
-      "phone": "4563214530",
-      "id": 1
-    },
-    {
       "name": "Mohd Shami",
       "username": "mohdshami",
       "email": "shami@gmail.com",
@@ -15,18 +8,25 @@
       "id": 4
     },
     {
-      "name": "KL Rahul",
-      "username": "klrahul",
-      "email": "rahul@gmail.com",
-      "phone": "7458965874",
-      "id": 5
-    },
-    {
       "name": "Shikhar Dhawan",
       "username": "dhawansikhar",
       "email": "dhawan@gmail.com",
       "phone": "4569874563",
       "id": 6
+    },
+    {
+      "name": "Virat Kohli",
+      "username": "viratkohli",
+      "email": "viratkohli@gmail.com",
+      "phone": "8596589658",
+      "id": 7
+    },
+    {
+      "name": "Pankaj Tripathi",
+      "username": "pankajtripathi",
+      "email": "pankaj@gmail.com",
+      "phone": "9658965236",
+      "id": 8
     }
   ]
 }
