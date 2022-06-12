@@ -1,18 +1,18 @@
-import { Card, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles({
-    image: {
+import { Card, styled } from '@mui/material';
+
+const StyledImage = styled('img')({
         height: 300,
         width: '100%',
         objectFit: 'cover'
     }
-})
+);
 
 const Image = ({ image }) => {
-    const classes = useStyles();
+    
     return (
         <Card>
-            <img className={classes.image} src={image.largeImageURL} alt={image.user} />
+            <StyledImage src={image.largeImageURL} alt={image.user} />
         </Card>
     )
 }

@@ -1,21 +1,21 @@
-import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core';
-import CollectionsIcon from '@material-ui/icons/Collections';
 
-const useStyles = makeStyles({
-    component: {
-        background: '#445A6F'
-    }
-})
+
+import { AppBar, Toolbar, Typography, styled } from '@mui/material';
+import { Collections as CollectionsIcon } from '@mui/icons-material';
+
+const Component = styled(AppBar)`
+    background: #445A6F;
+`;
 
 const NavBar = () => {
-    const classes = useStyles();
+    
     return (
-        <AppBar className={classes.component} position="static">
+        <Component position="static">
             <Toolbar>
                 <CollectionsIcon />
                 <Typography variant="h5" style={{marginLeft: 10}}>Image Finder</Typography>
             </Toolbar>
-        </AppBar>
+        </Component>
     )
 }
 

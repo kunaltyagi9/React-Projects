@@ -1,28 +1,27 @@
-import { Box, TextField, makeStyles } from '@material-ui/core';
+import { Box, InputBase, styled } from '@mui/material';
 
-const useStyles = makeStyles(theme => ({
-    component: {
-        background: '#F6F6F6',
-        '& > *': {
-            margin: theme.spacing(1)
-        }
+const Component = styled(Box)`
+    background: #F6F6F6;
+    & > div {
+        margin: 10px;
     }
-}))
+`;
 
-const BreadCrumb = ({onTextChange, onCountChange}) => {
-    const classes = useStyles();
+
+const BreadCrumb = ({ onTextChange, onCountChange }) => {
+    
     return (
-        <Box m={1} className={classes.component}>
-            <TextField 
+        <Component m={1}>
+            <InputBase 
                 onChange={(e) => onTextChange(e.target.value)}
-                label="Search images" 
+                placeholder="Search images" 
             />
-            <TextField 
+            <InputBase 
                 onChange={(e) => onCountChange(e.target.value)}
-                label="Number of images" 
+                placeholder="Number of images" 
                 type="number"
             />
-        </Box>
+        </Component>
     )
 }
 

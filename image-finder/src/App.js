@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+
 import './App.css';
+
+import { getImages } from './services/api';
+
 import NavBar from './components/NavBar.jsx';
 import BreadCrumb from './components/Breadcrumb';
-import { getImages } from './services/api';
 import Images from './components/Images';
 import SnackBar from './components/SnackBar';
 
