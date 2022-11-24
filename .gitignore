@@ -10,6 +10,8 @@ expense-tracker/node_modules
 expense-tracker/package-lock.json
 breaking-bad/node_modules
 breaking-bad/package-lock.json
+invoice-app/node_modules
+invoice-app/package-lock.json
 website-dev
 quiz-app
 chat-bot
