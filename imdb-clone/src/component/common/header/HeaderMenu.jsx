@@ -14,6 +14,7 @@ const HeaderMenu = ({ handleToggle, open, anchorRef }) => {
             placement="bottom-start"
             transition
             disablePortal
+            style={{ zIndex: 9999 }}
         >
             {({ TransitionProps }) => (
                 <Grow

@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
-
 import Carousel from 'react-multi-carousel';
 
-import { getCategoryMovies } from '../services/api';
-import { NOWPLAYING_API_URL } from '../constants/constant';
+import { styled, Box } from '@mui/material';
 
 const responsive = {
     desktop: {
@@ -20,42 +17,44 @@ const responsive = {
     }
 };
 
-const Banner = () => {
+const StyledBanner = styled('img')({
+    width: '100%'
+})
 
-    const [movies, setMovies] = useState([]);
+const Poster = styled('img')({
+    width: 165,
+    position: 'absolute',
+    left: 10,
+    bottom: 0,
+    transform: 'translateY(50%)'
+})
 
-    useEffect(() => {
-        const getData = async () => {
-            let response = await getCategoryMovies(NOWPLAYING_API_URL);
-            console.log(response);
-            // setMovies(response.results);
-        }
-
-        getData();
-    }, [])
+const Banner = ({ movies }) => {
 
     return (
-        <Carousel
-            swipeable={false}
-            draggable={false}
-            responsive={responsive}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={3000}
-            keyBoardControl={true}
-            showDots={false}
-            slidesToSlide={1}
-            containerClass="carousel-container"
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-        >
-            {
-                movies.map(movie => (
-                    <Banner key={movie.id} src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
-                ))
-            }
-        </Carousel>
-
+        <Box style={{ width: '65%' }}>
+            <Carousel
+                swipeable={false}
+                draggable={false}
+                responsive={responsive}
+                infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={3000}
+                keyBoardControl={true}
+                showDots={false}
+                slidesToSlide={1}
+                containerClass="react-multi-carousel-list"
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-40-px"
+                style={{ overflow: 'visible' }}
+            >
+                {
+                    movies.map(movie => (
+                        <StyledBanner key={movie.id} src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
+                    ))
+                }
+            </Carousel>
+        </Box>
     )
 }
 

@@ -57,7 +57,7 @@ const Header = () => {
     };
 
     return (
-        <AppBar style={{ minHeight: 56 }}>
+        <AppBar style={{ minHeight: 56 }} position='static'>
             <StyledToolBar>
                 <Logo src={logoURL} alt="logo" onClick={() => navigate(routePath.home)} />
                 <Box ref={anchorRef} onClick={handleToggle}>
