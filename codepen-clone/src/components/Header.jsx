@@ -1,6 +1,5 @@
 
-import { AppBar, Toolbar } from "@mui/material"
-import { styled } from '@mui/material/styles';
+import { AppBar, Toolbar, styled } from "@mui/material"
 
 const Container = styled(AppBar)`
     background: #060606;
