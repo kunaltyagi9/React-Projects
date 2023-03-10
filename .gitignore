@@ -12,6 +12,8 @@ breaking-bad/node_modules
 breaking-bad/package-lock.json
 invoice-app/node_modules
 invoice-app/package-lock.json
+imdb-clone/node_modules
+imdb-clone/package-lock.json
 website-dev
 quiz-app
 chat-bot
