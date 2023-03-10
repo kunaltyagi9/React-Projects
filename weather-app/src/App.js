@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import Weather from './components/Weather';
+
+
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <Weather />
+    <Home />
   );
 }
+
 export default App;

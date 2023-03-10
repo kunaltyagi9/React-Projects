@@ -1,87 +1,51 @@
-import { useState, useEffect } from 'react';
-import { Box, TextField, Button, makeStyles } from '@material-ui/core';
+import { useState } from 'react';
+import { Box, InputBase, Button, styled } from '@mui/material';
 import { getWeather } from '../services/api';
-import Information from './Information';
 
-const useStyles = makeStyles({
-    component: {
-        padding: 10,
-        display: 'flex',
-        background: '#445A6F'
-    },
-    input: {
-        color: '#fff',
-        marginRight: 15
-    },
-    labelRoot: {
-        fontSize: 15,
-        color: '#fff'
-    },
-    button: {
-        background: '#e67e22',
-        color: '#fff',
-        width: 150,
-        height: 40,
-        marginTop: 5
-    }
+const Container = styled(Box)({
+    background: '#445A6F',
+    padding: 10
+});
+
+const Input = styled(InputBase)({
+    color: '#FFF',
+    marginRight: 20,
+    fontSize: 18
+});
+
+const GetButton = styled(Button)({
+    background: '#e67e22'
 })
 
-const Form = () => {
-    const classes = useStyles();
-    const [ city, setCity ] = useState('');
-    const [ country, setCountry ] = useState('');
-    const [ click, handleClick ] = useState(false);
-    const [ data, setData ] = useState();
+const Form = ({ setResult }) => {
+    const [data, setData] = useState({ city: '', country: '' })
 
-    useEffect(() => {
-        const weatherInfo = async () => {
-            city && await getWeather(city, country).then(response => {
-                setData(response.data);
-            })
-        }
-        weatherInfo();
-        console.log(city, country);
-        console.log(data);
-        handleClick(false);
-    }, [click]);
-
-    const handleCityChange = (city) => {
-        setCity(city);
+    const handleChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value });
     }
 
-    const handleCountryChange = (country) => {
-        setCountry(country);
+    const getWeatherInfo = async () => {
+        let response = await getWeather(data.city, data.country);
+        setResult(response);
     }
 
     return (
-        <>
-            <Box className={classes.component}>
-                <TextField 
-                    InputProps={{className: classes.input}} 
-                    onChange={(e) => handleCityChange(e.target.value)} 
-                    className={classes.input} 
-                    label="City" 
-                    InputLabelProps={{
-                        classes: {root: classes.labelRoot}
-                    }}
-                />
-                <TextField 
-                    InputProps={{className: classes.input}} 
-                    onChange={(e) => handleCountryChange(e.target.value)} 
-                    className={classes.input} 
-                    label="Country" 
-                    InputLabelProps={{
-                        classes: {root: classes.labelRoot}
-                    }}
-                />
-                <Button 
-                    variant="contained" 
-                    onClick={() => handleClick(true)}
-                    className={classes.button}
-                >Get Weather</Button>
-            </Box>
-            <Information data={data} city={city} country={country} />
-        </>
+        <Container>
+            <Input 
+                placeholder="City"
+                onChange={(e) => handleChange(e)}
+                name="city"
+            />
+            <Input 
+                placeholder="Country"
+                onChange={(e) => handleChange(e)}
+                name="country"
+            />
+            <GetButton
+                variant="contained"
+                onClick={() => getWeatherInfo()}
+            >Get Weather</GetButton>
+        </Container>
     )
 }
 
