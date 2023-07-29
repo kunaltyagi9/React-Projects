@@ -6,7 +6,7 @@ export const getUsers = async () => {
     return await axios.get(`${usersUrl}/users`);
 }
 
-export const getUsers = async (id) => {
+export const getUser = async (id) => {
     id = id || '';
     try {
         return await axios.get(`${usersUrl}/${id}`);
