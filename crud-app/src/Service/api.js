@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-const usersUrl = 'http://localhost:3002/users';
+const usersUrl = 'http://localhost:8080';
 
+export const getUsers = async () => {
+    return await axios.get(`${usersUrl}/users`);
+}
 
 export const getUsers = async (id) => {
     id = id || '';
