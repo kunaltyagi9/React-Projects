@@ -27,13 +27,12 @@ const EditUser = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
+        const loadUserDetails = async() => {
+            const response = await getUser(id);
+            setUser(response.data);
+        }
         loadUserDetails();
-    }, []);
-
-    const loadUserDetails = async() => {
-        const response = await getUsers(id);
-        setUser(response.data);
-    }
+    }, [id]);
 
     const editUserDetails = async() => {
         const response = await editUser(id, user);
