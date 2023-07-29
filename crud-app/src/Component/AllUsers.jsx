@@ -38,7 +38,7 @@ const AllUsers = () => {
 
     const getAllUsers = async () => {
         let response = await getUsers();
-        setUsers(response.data);
+        setUsers(response?.data);
     }
 
     return (
@@ -54,7 +54,7 @@ const AllUsers = () => {
                 </THead>
             </TableHead>
             <TableBody>
-                {users.map((user) => (
+                {users?.map((user) => (
                     <TRow key={user.id}>
                         <TableCell>{user.id}</TableCell>
                         <TableCell>{user.name}</TableCell>
