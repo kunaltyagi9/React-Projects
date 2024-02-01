@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box, styled } from '@mui/material';
 import Sunset from '../assets/images/bg.jpg';
 import Form from '../components/Form';

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box, InputBase, Button, styled } from '@mui/material';
 import { getWeather } from '../services/api';
 

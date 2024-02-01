@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Box, Typography, styled } from '@mui/material';
 import { LocationOn, SettingsBrightness, Opacity, Brightness5, Brightness6, Dehaze, Cloud } from '@mui/icons-material'
 
